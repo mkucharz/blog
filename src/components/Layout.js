@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import { rhythm, scale } from '../utils/typography'
 import { createGlobalStyle } from "styled-components"
 
+
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: Montserrat, sans-serif;
@@ -29,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
     font-style: italic;
   }
+  td[align=right] { text-align: right }
 `
 
 class Layout extends React.Component {
@@ -96,8 +98,9 @@ class Layout extends React.Component {
           <footer>
             {` `}
             {` `}
-            <a href="https://www.gatsbyjs.org">twitter</a> |{` `}
-            <a href="https://www.gatsbyjs.org">linkedIn</a>
+            <a href="https://twitter.com/mkucharz">twitter</a> |{` `}
+            <a href="https://www.linkedin.com/in/maciejkucharz">linkedIn</a>
+            <a href="https://drift.me/maciejkucharz/meeting">book a meeting</a>
           </footer>
         </div>
       </React.Fragment>

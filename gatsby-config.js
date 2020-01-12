@@ -1,14 +1,36 @@
 module.exports = {
   siteMetadata: {
-    title: `Product development and more`,
+    title: `productmess.com`,
     author: `Maciej Kucharz`,
-    description: `Personal blog, I'm writing mainly about different product management/development matters.`,
-    siteUrl: `https://kucharz.net`,
+    description: `Personal blog. I'm writing mainly about different product management/development matters.`,
+    siteUrl: `https://productmess.com`,
     social: {
       twitter: `mkucharz`,
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `@raae/gatsby-remark-oembed`,
+            options: {
+              // usePrefix: false,
+              // usePrefix: true is the same as ["oembed"]
+              // usePrefix: ["oembed", "video"],
+              usePrefix: true,
+              providers: {
+                // Important to exclude providers
+                // that adds js to the page.
+                // If you do not need them.
+                include: ["Twitter"]
+              }
+            }
+          }
+        ]
+      }
+    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -118,21 +140,9 @@ module.exports = {
             }
             `,
             output: '/rss.xml',
-            title: 'Gatsby RSS feed',
+            title: 'Product development and more RSS feed',
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
-        background_color: `#1c304f`,
-        theme_color: `#f0464b`,
-        display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
       },
     },
     `gatsby-plugin-offline`,
@@ -141,6 +151,32 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-drift',
+      options: {
+        appId: '42ytk2kv9pby',
+      },
+    },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-T3V6J7D",
+  
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+  
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        // Defaults to null
+        defaultDataLayer: { platform: "gatsby" },
+  
+        // Specify optional GTM environment details.
+        // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
+        // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
+        // dataLayerName: "YOUR_DATA_LAYER_NAME",
       },
     },
   ],

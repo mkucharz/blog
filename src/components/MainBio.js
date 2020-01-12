@@ -28,12 +28,8 @@ function MainBio() {
               }}
             />
             <p>
-              Hi, my name is <strong>{author}</strong> I live and work in Oslo, Norway and Białystok, Poland.
-              My life mission is to speed up product development.
-              <br />
-              <a href={`https://twitter.com/${social.twitter}`}>
-                Follow me on Twitter
-              </a>
+            Hi, my name is {author}. My life mission is to <strong>speed up product development</strong>.
+            I'm writing here about my findings, my initiatives, and everything related to product building process.
             </p>
           </div>
         )

@@ -1,0 +1,5 @@
+hosting:
+  blog:
+    src: public
+    config:
+      browser_router: false

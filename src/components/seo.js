@@ -2,14 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import defaultOpenGraphImage from '../../content/assets/image.jpg'
 
-function SEO({ description, lang, meta, keywords, title }) {
+
+function SEO({ description, lang, meta, keywords, title, image}) {
   return (
     <StaticQuery
       query={detailsQuery}
       render={data => {
         const metaDescription =
           description || data.site.siteMetadata.description
+        const ogImageUrl = ( image || defaultOpenGraphImage )
         return (
           <Helmet
             htmlAttributes={{
@@ -22,6 +25,7 @@ function SEO({ description, lang, meta, keywords, title }) {
                 name: `description`,
                 content: metaDescription,
               },
+              
               {
                 property: `og:title`,
                 content: title,
@@ -29,6 +33,18 @@ function SEO({ description, lang, meta, keywords, title }) {
               {
                 property: `og:description`,
                 content: metaDescription,
+              },
+              {
+                property: `og:image`,
+                content: ogImageUrl,
+              },
+              {
+                property: `twitter:image`,
+                content: ogImageUrl,
+              },
+              {
+                property: `image`,
+                content: ogImageUrl,
               },
               {
                 property: `og:type`,
@@ -50,6 +66,10 @@ function SEO({ description, lang, meta, keywords, title }) {
                 name: `twitter:description`,
                 content: metaDescription,
               },
+              {
+                name: 'google-site-verification',
+                content: "Us_QFftJT2g2rjkcKVkF2uscpnfbO2LzUXrc1iTmhSo",
+              }
             ]
               .concat(
                 keywords.length > 0
@@ -90,6 +110,7 @@ const detailsQuery = graphql`
         title
         description
         author
+        siteUrl
       }
     }
   }

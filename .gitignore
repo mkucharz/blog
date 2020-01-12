@@ -67,3 +67,8 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+node_modules
+syncano/.dist
+syncano/.bundles
+syncano/**/scripts/.bundles

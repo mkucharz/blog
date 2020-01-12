@@ -12,11 +12,17 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-    console.log(this.props.pageContext)
+
+    const { ogimage } = post.frontmatter
+    const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
+        <SEO 
+          title={post.frontmatter.title}
+          description={post.excerpt}
+          image={ogImagePath}
+        />
         <h1>{post.frontmatter.title}</h1>
         <p
           style={{
@@ -35,6 +41,14 @@ class BlogPostTemplate extends React.Component {
           }}
         />
         <Bio />
+        
+        <div style={{height: 367, marginBottom: 36}}>
+          <iframe 
+            src="/convertkit.html"
+            title="Newsletter"
+            style={{position: 'absolute', border: 'none', height: '100%', width: '100%'}}>
+          </iframe>
+        </div>
 
         <ul
           style={{
@@ -81,6 +95,14 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        # ogimage
+        ogimage { 
+         childImageSharp {
+            fixed {
+              src
+            }
+          }
+        }
       }
       body
     }
