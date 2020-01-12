@@ -140,7 +140,7 @@ module.exports = {
             }
             `,
             output: '/rss.xml',
-            title: 'Product development and more RSS feed',
+            title: 'productmess.com RSS feed',
           },
         ],
       },
@@ -179,5 +179,6 @@ module.exports = {
         // dataLayerName: "YOUR_DATA_LAYER_NAME",
       },
     },
+    'gatsby-plugin-favicon'
   ],
 }
