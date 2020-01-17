@@ -28,7 +28,7 @@ function Bio() {
               }}
             />
             <p>
-              <a className="nameSmall" href="/">Product development and more</a>
+              <a className="nameSmall" href="/">productmess.com</a>
               <br />
              by Maciej Kucharz
               {` `}

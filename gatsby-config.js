@@ -9,6 +9,7 @@ module.exports = {
     },
   },
   plugins: [
+    'gatsby-plugin-advanced-sitemap',
     {
       resolve: `gatsby-transformer-remark`,
       options: {

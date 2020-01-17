@@ -42,11 +42,12 @@ class BlogPostTemplate extends React.Component {
         />
         <Bio />
         
-        <div style={{height: 367, marginBottom: 36}}>
+        <div style={{height: 400, marginBottom: 36}}>
           <iframe 
             src="/convertkit.html"
             title="Newsletter"
-            style={{position: 'absolute', border: 'none', height: '100%', width: '100%'}}>
+            scrolling="no"
+            style={{position: 'relative', border: 'none', height: 400, width: '100%',  height: '100%'}}>
           </iframe>
         </div>
 

@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "productmess.com",
   "private": true,
-  "description": "Product development and more",
+  "description": "productmess.com",
   "version": "0.1.0",
   "author": "Maciej Kucharz <maciej@kucharz.net>",
   "bugs": {
@@ -15,6 +15,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.14.4",
     "gatsby-image": "^2.0.22",
+    "gatsby-plugin-advanced-sitemap": "^1.4.5",
     "gatsby-plugin-drift": "^1.0.0",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-feed": "^2.0.8",

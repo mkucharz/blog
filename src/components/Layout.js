@@ -31,6 +31,11 @@ const GlobalStyle = createGlobalStyle`
     font-style: italic;
   }
   td[align=right] { text-align: right }
+  thead {
+    position: sticky;
+    top: 0;
+    background: #fff;
+  }
 `
 
 class Layout extends React.Component {
@@ -99,7 +104,7 @@ class Layout extends React.Component {
             {` `}
             {` `}
             <a href="https://twitter.com/mkucharz">twitter</a> |{` `}
-            <a href="https://www.linkedin.com/in/maciejkucharz">linkedIn</a>
+            <a href="https://www.linkedin.com/in/maciejkucharz">linkedIn</a> |{` `}
             <a href="https://drift.me/maciejkucharz/meeting">book a meeting</a>
           </footer>
         </div>
