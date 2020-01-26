@@ -148,16 +148,27 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    // {
+    //   resolve: 'gatsby-plugin-drift',
+    //   options: {
+    //     appId: '42ytk2kv9pby',
+    //   },
+    // },
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-drift',
-      options: {
-        appId: '42ytk2kv9pby',
+        fonts: [
+          {
+            family: `Montserrat`,
+            subsets: [`latin`],
+            variants: ['300', `400`, '600', `700`],
+          },
+          {
+            family: `Merriweather`,
+            subsets: [`latin`],
+            variants: ['900'],
+          },
+        ],
       },
     },
     {
@@ -180,6 +191,7 @@ module.exports = {
         // dataLayerName: "YOUR_DATA_LAYER_NAME",
       },
     },
-    'gatsby-plugin-favicon'
+    'gatsby-plugin-favicon',
+    `gatsby-plugin-postcss`,
   ],
 }

@@ -5,7 +5,76 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
-import { rhythm, scale } from '../utils/typography'
+import {SuggestionBox} from '../components/suggested'
+import Styled from 'styled-components'
+
+
+const NewsletterBox = Styled.iframe`
+    border: none;
+    width: 100%;
+    height: 340px;
+`
+
+const StyledContent = Styled.div`
+  p {
+    max-width: 42rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  h2, h3, h4, h5 {
+    max-width: 42rem;
+    margin: 0 auto 1rem;
+  }
+
+  p+h2 {
+    margin-top: 3rem;
+  }
+
+  .twitter-tweet {
+    max-width: 42rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  .caption {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  .tableHeader {
+    margin: 2rem 0;
+    width: 100%;
+      : none;
+  }
+
+  table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    a {
+      color: #c19501;
+      letter-spacing: .5px;
+    }
+    th {
+      padding: 1rem 0;
+    }
+    td {
+      padding: .5rem;
+      border-bottom: 1px solid #ccc;
+    }
+    tr:hover {
+      td {
+        background-color: #f9f9f9;
+      }
+    }
+    thead {
+      position: sticky;
+      top: 0;
+      background: #fff;
+    }
+  }
+`
+
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -23,58 +92,22 @@ class BlogPostTemplate extends React.Component {
           description={post.excerpt}
           image={ogImagePath}
         />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <MDXRenderer>{post.body}</MDXRenderer>
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
-        
-        <div style={{height: 400, marginBottom: 36}}>
-          <iframe 
-            src="/convertkit.html"
-            title="Newsletter"
-            scrolling="no"
-            style={{position: 'relative', border: 'none', height: 400, width: '100%',  height: '100%'}}>
-          </iframe>
-        </div>
+        <div className="container px-4 mx-auto pt-8 pb-4">
+          <header className="max-w-2xl m-auto mb-8">
+          <h1 className="text-black leading-none font-black text-4xl sm:text-5xl mb-1">{post.frontmatter.title}</h1>
+          <span className="text-sm">
+            {post.frontmatter.date}
+          </span>
+          </header>
+          
+          <StyledContent>
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </StyledContent>
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+          <Bio />
+          <NewsletterBox title="newsletter" src="https://productmess.ck.page/798d364f19"/>
+        </div>
+        <SuggestionBox previous={previous} next={next} className="mb-2" />
       </Layout>
     )
   }
@@ -96,7 +129,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        # ogimage
         ogimage { 
          childImageSharp {
             fixed {

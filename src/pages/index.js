@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby'
 import MainBio from '../components/MainBio'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
+// import { rhythm } from '../utils/typography'
 
 class BlogIndex extends React.Component {
   render() {
@@ -15,7 +15,7 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-          title="All posts"
+          title='All posts'
           keywords={[
             `blog`,
             `product development`,
@@ -24,25 +24,23 @@ class BlogIndex extends React.Component {
             `speed up product development`
           ]}
         />
-        <MainBio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
-          )
-        })}
+        <div className="container mx-auto pb-4 px-4 sm:px-0">
+          <MainBio className="mx-4" />
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <article className="max-w-2xl m-auto mb-10" key={node.fields.slug}>
+                <h2 className="m-0 font-heading text-black text-2xl">
+                  <Link className="text-black font-black" to={node.fields.slug}>
+                    {title}
+                  </Link>
+                </h2>
+                <small>{node.frontmatter.date}</small>
+                <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+              </article>
+            )
+          })}
+        </div>
       </Layout>
     )
   }

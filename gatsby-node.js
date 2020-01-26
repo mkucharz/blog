@@ -20,6 +20,14 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                description
+                ogimage {
+                  childImageSharp {
+                    fixed {
+                      src
+                    }
+                  }
+                }
               }
               body
             }

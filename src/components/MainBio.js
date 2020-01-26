@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
-import { rhythm } from '../utils/typography'
+// import { rhythm } from '../utils/typography'
 
 function MainBio() {
   return (
@@ -11,25 +11,17 @@ function MainBio() {
       render={data => {
         const { author, social } = data.site.siteMetadata
         return (
-          <div
-            style={{
-              display: `flex`,
-              marginBottom: rhythm(2.5),
-            }}
+          <div className="m-auto flex items-start max-w-2xl w-full mt-10 mb-12"
           >
+            
             <Image
+              className="flex-shrink-0 mr-4 rounded-full"
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
             />
-            <p>
+            <p className="m-0">
             Hi, my name is {author}. My life mission is to <strong>speed up product development</strong>.
-            I'm writing here about my findings, my initiatives, and everything related to product building process.
+            I'm writing here about my findings, my initiatives, and everything related to digital product building process.
             </p>
           </div>
         )

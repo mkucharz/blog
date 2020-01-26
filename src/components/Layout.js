@@ -1,41 +1,11 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import { rhythm, scale } from '../utils/typography'
 import { createGlobalStyle } from "styled-components"
+import {Footer} from './Footer'
 
 
 const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: Montserrat, sans-serif;
-    background-color: #fff;
-    color: #333333;
-  }
-  a {
-    color: #c19501;
-  }
-  h1, h2, h3 {
-    color: black;
-  }
-  h3 a {
-    color: black;
-  }
-  a.nameSmall {
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: none;
-    line-height: 1;
-  }
-  .caption {
-    text-align: center;
-    font-style: italic;
-  }
-  td[align=right] { text-align: right }
-  thead {
-    position: sticky;
-    top: 0;
-    background: #fff;
-  }
 `
 
 class Layout extends React.Component {
@@ -46,19 +16,8 @@ class Layout extends React.Component {
 
     if (location.pathname === rootPath) {
       header = (
-        <h1
-          style={{
-            ...scale(1.0),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
+        <h1 className="mx-auto max-w-2xl font-black px-4 sm:px-0 text-3xl sm:text-4xl">
+          <Link className="no-underline text-black"
             to={`/`}
           >
             {title}
@@ -67,47 +26,21 @@ class Layout extends React.Component {
       )
     } else {
       header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-            marginBottom: rhythm(-1),
-          }}
+        <Link className="no-underline sm:mx-auto max-w-2xl block text-2xl mb-4 px-4 sm:px-0"
+          to={`/`}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
+          &larr; {title}
+        </Link>
       )
     }
     return (
       <React.Fragment>
         <GlobalStyle />
-        <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}
-        >
+        <main>
           {header}
           {children}
-          <footer>
-            {` `}
-            {` `}
-            <a href="https://twitter.com/mkucharz">twitter</a> |{` `}
-            <a href="https://www.linkedin.com/in/maciejkucharz">linkedIn</a> |{` `}
-            <a href="https://drift.me/maciejkucharz/meeting">book a meeting</a>
-          </footer>
-        </div>
+          <Footer />
+        </main>
       </React.Fragment>
     )
   }

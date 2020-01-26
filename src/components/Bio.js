@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
-import { rhythm } from '../utils/typography'
+// import { rhythm } from '../utils/typography'
 
 function Bio() {
   return (
@@ -12,27 +12,22 @@ function Bio() {
         const { author, social } = data.site.siteMetadata
         return (
           <div
-            style={{
-              display: `flex`,
-              marginBottom: rhythm(2.5),
-            }}
+            className="m-auto flex items-center max-w-2xl w-full mb-12 pt-4 border-t-2
+          border-light-gray border-solid"
           >
             <Image
+              className="flex-shrink-0 mr-4 rounded-full"
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
             />
-            <p>
-              <a className="nameSmall" href="/">productmess.com</a>
-              <br />
-             by Maciej Kucharz
-              {` `}
-            </p>
+            <div>
+              <div>
+                <a className="nameSmall" href="/">
+                  productmess.com
+                </a>
+              </div>
+              <div>by Maciej Kucharz</div>
+            </div>
           </div>
         )
       }}
