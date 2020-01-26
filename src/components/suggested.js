@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-export const SuggestionBox = ({ previous, next, ...props }) => {
-  console.log(previous, next)
-
+export const SuggestionBox = ({ posts, ...props }) => {
   const createPreview = post => {
     if (!post) {
       return ''
@@ -15,7 +13,7 @@ export const SuggestionBox = ({ previous, next, ...props }) => {
     const slug = post.fields.slug
 
     return (
-      <article className="flex-72 mx-4 pb-4 lg:w-1/2 md:mx-2 mb-8 bg-white rounded-sm overflow-hidden shadow relative">
+      <article key={title} className="flex-72 mx-4 pb-4 lg:w-1/2 md:mx-2 mb-8 bg-white rounded-sm overflow-hidden shadow relative">
         <Link to={slug} className="text-gray">
           <img
             className="h-56 w-full object-cover object-center"
@@ -33,16 +31,12 @@ export const SuggestionBox = ({ previous, next, ...props }) => {
     )
   }
 
-  let nextSuggestion = createPreview(next)
-  let prevSuggestion = createPreview(previous)
-
   return (
     <div className="py-4 bg-secondary px-4">
       <section className="container mx-auto">
         <h2 className="py-6 m-auto text-center">Read more</h2>
         <div className="block flex flex-wrap justify-center m-auto max-w-2xl">
-          {prevSuggestion}
-          {nextSuggestion}
+          {posts.map(post => createPreview(post))}
         </div>
       </section>
     </div>

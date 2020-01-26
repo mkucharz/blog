@@ -2,7 +2,6 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
-// import { rhythm } from '../utils/typography'
 
 function MainBio() {
   return (
@@ -11,9 +10,7 @@ function MainBio() {
       render={data => {
         const { author, social } = data.site.siteMetadata
         return (
-          <div className="m-auto flex items-start max-w-2xl w-full mt-10 mb-12"
-          >
-            
+          <div className="m-auto flex items-start max-w-2xl w-full mt-10 mb-12">
             <Image
               className="flex-shrink-0 mr-4 rounded-full"
               fixed={data.avatar.childImageSharp.fixed}

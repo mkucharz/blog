@@ -26,7 +26,7 @@ class Layout extends React.Component {
       )
     } else {
       header = (
-        <Link className="no-underline sm:mx-auto max-w-2xl block text-2xl mb-4 px-4 sm:px-0"
+        <Link className="no-underline sm:mx-auto max-w-2xl block text-2xl mb-4 pt-4 px-4 sm:px-0"
           to={`/`}
         >
           &larr; {title}

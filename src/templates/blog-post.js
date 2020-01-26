@@ -107,7 +107,7 @@ class BlogPostTemplate extends React.Component {
           <Bio />
           <NewsletterBox title="newsletter" src="https://productmess.ck.page/798d364f19"/>
         </div>
-        <SuggestionBox previous={previous} next={next} className="mb-2" />
+        <SuggestionBox posts={[previous, next]} className="mb-2" />
       </Layout>
     )
   }

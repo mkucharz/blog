@@ -5,7 +5,8 @@ module.exports = {
     description: `Personal blog. I'm writing mainly about different product management/development matters.`,
     siteUrl: `https://productmess.com`,
     social: {
-      twitter: `mkucharz`,
+      twitter: `http://twitter.com/mkucharz`,
+      linkedIn: 'https://www.linkedin.com/in/maciejkucharz'
     },
   },
   plugins: [
