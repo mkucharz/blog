@@ -5,7 +5,9 @@ module.exports = {
     tailwindcss(`./tailwind.config.js`),
     require(`autoprefixer`),
     require(`cssnano`)({
-      preset: `default`
+      preset: [
+        `default`, {"discardComments": {"removeAll": true}}
+      ]
     })
   ]
 };

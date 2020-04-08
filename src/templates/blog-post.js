@@ -21,6 +21,13 @@ const StyledContent = Styled.div`
     margin: 0 auto 1.5rem;
   }
 
+  ul {
+    max-width: 42rem;
+    margin: 0 auto 1.5rem;
+    padding-left: 2rem;
+    /* list-style-type: square; */
+  }
+
   h2, h3, h4, h5 {
     max-width: 42rem;
     margin: 0 auto 1rem;
@@ -82,22 +89,21 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
-    const { ogimage } = post.frontmatter
+    const { ogimage, description, title, date } = post.frontmatter
     const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO 
-          title={post.frontmatter.title}
-          description={post.excerpt}
+          title={title}
+          location={this.props.location}
+          description={description || post.excerpt}
           image={ogImagePath}
         />
         <div className="container px-4 mx-auto pt-8 pb-4">
           <header className="max-w-2xl m-auto mb-8">
-          <h1 className="text-black leading-none font-black text-4xl sm:text-5xl mb-1">{post.frontmatter.title}</h1>
-          <span className="text-sm">
-            {post.frontmatter.date}
-          </span>
+            <h1 className="text-black leading-none font-black text-4xl sm:text-5xl mb-1">{title}</h1>
+            <span className="text-sm">{date}</span>
           </header>
           
           <StyledContent>
@@ -129,6 +135,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        description
         ogimage { 
          childImageSharp {
             fixed {

@@ -1,12 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import { createGlobalStyle } from "styled-components"
 import {Footer} from './Footer'
-
-
-const GlobalStyle = createGlobalStyle`
-`
 
 class Layout extends React.Component {
   render() {
@@ -35,7 +30,6 @@ class Layout extends React.Component {
     }
     return (
       <React.Fragment>
-        <GlobalStyle />
         <main>
           {header}
           {children}

@@ -1,17 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import defaultOpenGraphImage from '../../content/assets/image.jpg'
 
 
-function SEO({ description, lang, meta, keywords, title, image}) {
+function SEO({ description, lang, meta, keywords, title, image, location }) {
   return (
     <StaticQuery
       query={detailsQuery}
       render={data => {
-        const metaDescription =
-          description || data.site.siteMetadata.description
+        const metaDescription = description || data.site.siteMetadata.description
         const ogImageUrl = data.site.siteMetadata.siteUrl + ( image || defaultOpenGraphImage )
 
         return (
@@ -38,6 +37,10 @@ function SEO({ description, lang, meta, keywords, title, image}) {
               {
                 property: `og:image`,
                 content: ogImageUrl,
+              },
+              {
+                property: `og:url`,
+                content: location ? location.href : '',
               },
               {
                 property: `twitter:image`,
